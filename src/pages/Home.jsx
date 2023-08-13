@@ -4,7 +4,7 @@ import Product from "../components/Product"
 
 const Home = () => {
   const API_URL = "https://fakestoreapi.com/products";
-  const [posts, setPost] = useState();
+  const [posts, setPost] = useState([]);
   const [loading, setLoading] = useState(false);
 
   async function fetchProductData(){
@@ -30,17 +30,17 @@ const Home = () => {
   return (
     <div>
       {loading ? <Spinner/> : 
-      posts.length >0 ? (
+      posts.length > 0 ? (
         <div>
-          {posts.map((post) => {
+          {posts.map((post) => (
             <Product key={post.id} post={post} />
-          })}
+      ))}
         </div>
-      ) : (
+      ) : 
         <div>
           No Data Found
         </div>
-      ) }
+       }
     </div>
   );
 };
