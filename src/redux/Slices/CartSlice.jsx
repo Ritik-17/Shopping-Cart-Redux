@@ -4,8 +4,14 @@ export const CartSlice = createSlice({
     name:"cart",
     initialState : [],
     reducers: {
-        add : () => {},
-        remove : () => {},
+        add : (state, action) => {
+            state.push(action.payload);
+            // we can access any input parameter through action payload. Action payload her resembles the selected item.
+        },
+        remove : (state, action) => {
+            return state.filter((item) => item.id !== action.payload);
+            // The above statement represents that whoever's id will be not equal to input parameter stays. Whose matches will be removed
+        },
     }
 });
 
